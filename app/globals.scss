@@ -1,0 +1,210 @@
+@use "tailwindcss/base";
+@use "tailwindcss/components";
+@use "tailwindcss/utilities";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@layer base {
+  /* poppins-300 - latin */
+  @font-face {
+    font-display: swap;
+    font-family: "Switzer";
+    font-style: normal;
+    font-weight: 300;
+    src: url("../public/assets/fonts/switzer/Switzer-Light.otf") format("otf"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+  @font-face {
+    font-display: swap;
+    font-family: "Switzer";
+    font-style: normal;
+    font-weight: 400;
+    src: url("../public/assets/fonts/switzer/Switzer-Medium.otf") format("otf"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+  @font-face {
+    font-display: swap;
+    font-family: "Switzer";
+    font-style: normal;
+    font-weight: 500;
+    src: url("../public/assets/fonts/switzer/Switzer-Medium.otf") format("otf"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+  @font-face {
+    font-display: swap;
+    font-family: "Switzer";
+    font-style: normal;
+    font-weight: 600;
+    src: url("../public/assets/fonts/switzer/Switzer-Semibold.otf")
+      format("otf"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+  @font-face {
+    font-display: swap;
+    font-family: "Switzer";
+    font-style: normal;
+    font-weight: 700;
+    src: url("../public/assets/fonts/switzer/Switzer-Bold.otf") format("otf"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+
+  @font-face {
+    font-family: "Din";
+    font-weight: 300;
+    src: url("../public/assets/fonts/din/ArbFONTS-DINNEXTLTARABIC-LIGHT-.ttf");
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Din";
+    font-weight: 400;
+    src: url("../public/assets/fonts/din/ArbFONTS-DINNextLTArabic-Regular.ttf");
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Din";
+    font-weight: 400;
+    src: url("../public/assets/fonts/din/ArbFONTS-DINNextLTArabic-Regular.ttf");
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Din";
+    font-weight: 500;
+
+    src: url("../public/assets/fonts/din/ArbFONTS-DINNextLTArabic-Medium.ttf");
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Din";
+    font-weight: 600;
+
+    src: url("../public/assets/fonts/din/ArbFONTS-DINNextLTArabic-Heavy.ttf");
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Din";
+    font-weight: 700;
+
+    src: url("../public/assets/fonts/din/ArbFONTS-DINNextLTArabic-Bold.ttf");
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Din";
+    font-weight: 900;
+    src: url("../public/assets/fonts/din/ArbFONTS-DINNextLTArabic-Black.ttf");
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "IBM Plex Sans";
+    font-weight: 400;
+    src: url("../public/assets/fonts/ibm/IBMPlexSans-Regular.ttf");
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "IBM Plex Sans";
+    font-weight: 500;
+    src: url("../public/assets/fonts/ibm/IBMPlexSans-Medium.ttf");
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "IBM Plex Sans";
+    font-weight: 600;
+    src: url("../public/assets/fonts/ibm/IBMPlexSans-SemiBold.ttf");
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "IBM Plex Sans";
+    font-weight: 700;
+    src: url("../public/assets/fonts/ibm/IBMPlexSans-Bold.ttf");
+    font-display: swap;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  // color: var(--foreground);
+  // background: var(--background);
+  @apply font-switzer;
+}
+body:has(.small-nav) {
+  & > div {
+    @apply pt-[125px];
+  }
+}
+
+html[dir="rtl"] {
+  body {
+    @apply font-din;
+  }
+}
+
+.base-btn {
+  @apply flex items-center justify-center gap-3 rounded-full border border-primary bg-primary px-8 py-3 font-medium text-white duration-300 hover:cursor-pointer hover:border-primary hover:bg-white hover:text-primary;
+
+  &:disabled {
+    @apply bg-[#F0F0F0] text-[#CACBD2];
+
+    &:hover {
+      &::before,
+      &::after {
+        content: unset;
+      }
+    }
+  }
+}
+.base-btn-white {
+  @apply flex items-center justify-center gap-3 rounded-full border border-primary bg-white px-8 py-3 font-medium text-primary duration-300 hover:cursor-pointer hover:border-white hover:bg-primary hover:text-white;
+
+  &:disabled {
+    @apply bg-[#F0F0F0] text-[#CACBD2];
+
+    &:hover {
+      &::before,
+      &::after {
+        content: unset;
+      }
+    }
+  }
+}
+/* width */
+::-webkit-scrollbar {
+  @apply w-2;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #C19877 #f3f4f6
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  @apply rounded-lg bg-primary;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  // -webkit-appearance: none;
+  // margin: 0;
+}
+
+input[type="number"] {
+  // -moz-appearance: textfield;
+}

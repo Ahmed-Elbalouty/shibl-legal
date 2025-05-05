@@ -1,0 +1,162 @@
+{
+  "lang": "ltr",
+  "locale": {
+    "ar": "En",
+    "en": "عربي"
+  },
+  "NAV": {
+    "lang": "ع",
+    "home": "Home",
+    "about": "About us",
+    "services-section": "Services",
+    "faq": "FAQ",
+    "contact": "Contact Us",
+    "mainlinks": "Main Links",
+    "quickAccess": "Quick Access"
+  },
+  "HERO": {
+    "award": "One of the best law firms",
+    "main": "Legal solutions tailored to your individual and corporate needs",
+    "bottom": "We put our clients' interests first and work diligently to achieve the best possible outcomes in every case.",
+    "contact": "Contact Us",
+    "textnextbtn": "Don't hesitate to seek legal advice"
+  },
+  "BOTTOMHERO": {
+    "team": "A team of certified and competent lawyers",
+    "provenlegal": "Proven legal successes endorsed by our valued clients",
+    "experience": "Extensive experience in all legal specialties"
+  },
+  "CONTACTUS": {
+    "title": "Contact Us",
+    "desc": "We are here to help you! Get in touch with us via phone or email, or visit us at our office.You can also use the interactive map to find our exact location",
+    "SheblLegal": "Shebl Legal",
+    "time": "Daily, from 08:00 AM to 04:00 PM",
+    "location": "Riyadh, Kingdom of Saudi Arabia",
+    "trusted": "Your trusted legal partner"
+  },
+  "ABOUTUS": {
+    "title": "About Us",
+    "desc": "Learn about our vision, mission, and the values we believe in. Discover the story behind the founding of our firm and the legal journey that made us one of the leading law offices. We work with sincerity to achieve justice and serve our clients",
+    "textone": "Quick response and personalized attention to every case",
+    "texttwo": "Strong defense and innovative legal strategies",
+    "textthree": "Effective legal procedures to protect your rights and interests",
+    "textfour": "Accurate legal consultations based on the latest laws",
+    "btmtext": "A wide range of legal services",
+    "textbtn": "More about us"
+  },
+  "WHYUS": {
+    "title": "Why us",
+    "desc": "Because we are distinguished by expertise, credibility, and a full commitment to serving our clients. With us, you will receive the legal solutions you deserve, with unparalleled experience and professionalism.",
+    "textone": "Legal successes recognized by our valued clients.",
+    "texttwo": "Valued clients happy with the service.",
+    "textthree": "Years of experience",
+    "textfour": "A team of certified lawyers",
+    "textbtn": "Book your legal consultation"
+  },
+  "SERVICES": {
+    "title": "Our services",
+    "desc": "At Shibl Legal, we offer a comprehensive range of legal services tailored to meet our clients' needs. Whether you are an individual seeking legal advice or a company in need of integrated legal support, we are here to be your trusted legal partner.",
+    "textone": "Litigation and defense",
+    "textonedesc": "Our professional team represents our clients before courts and various judicial authorities to ensure their rights and achieve justice.",
+    "texttwo": "Contract drafting",
+    "texttwodesc": "We assist in preparing and drafting contracts of all types to ensure the protection of your legal rights and the achievement of your interests.",
+    "textthree": "Judicial representation",
+    "textthreedesc": "We represent our clients in all legal proceedings and complex cases to ensure the smooth and efficient progress of the legal process.",
+    "textfour": "Legal consultations",
+    "textfourdesc": "We provide accurate and reliable legal consultations that help you make the right decisions in various matters, whether personal or commercial.",
+    "textfive": "Company formation",
+    "textfivedesc": "We provide company formation services and prepare all the necessary legal documents required to start a business correctly and legally."
+  },
+  "FAQ": {
+    "title": "Frequently Asked Questions",
+    "desc": "All the questions that come to your mind to learn more about Shibl Law Firm",
+    "viewAllButton": "View All",
+    "question1": "What are your services?",
+    "question2": "What are your services?",
+    "question3": "What are your services?",
+    "question4": "What are your services?",
+    "question5": "What are your services?",
+    "question6": "What are your services?",
+    "question7": "What are your services?",
+    "answer1": "We offer a variety of services such as web design, app development, and technical consulting."
+  },
+  "LABELS": {
+    "contactUs": "Contact Us",
+    "location": "Location",
+    "subject": "Subject",
+    "copied": "Copied successfully",
+    "Get Started": "Get Started",
+    "tooShort": "Too Short!",
+    "tooLong": "Too Long!",
+    "enter": "Enter {name}",
+    "enterYour": "Enter your {name}",
+    "email": "Email",
+    "name": "Name",
+    "phone": "Phone",
+    "Your Name": "Your Name",
+    "Email Address": "Email Address",
+    "phoneNumber": "Phone Number",
+    "enterYourEmail": "Enter Your Email",
+    "fullname": "Full Name",
+    "Message": "Message",
+    "optional": " (Optional) ",
+    "services": "Our Services",
+    "servicesdesc": "At Shibl Legal, we offer a comprehensive range of legal services tailored to meet our clients' needs. Whether you're an individual seeking legal advice or a company in need of full legal support, we are here to be your trusted legal partner",
+    "contactus": "Contact Us",
+    "contactdesc": "ChatGPT said:We’re here to help! Contact us by phone or email, or visit us at our office. You can also use the interactive map to find our exact location",
+    "about": "About Us",
+    "aboutdesc": "We prioritize our clients' interests and work diligently to achieve the best possible outcomes in every case"
+  },
+  "BUTTONS": {
+    "getServiceNow": "get Service Now",
+    "getStart": "Get Start",
+    "subscribe": "Subscribe",
+    "introVideo": "Watch Video",
+    "Submit": "Submit",
+    "Leave us a Message": "Leave us a Message",
+    "try again": "Try again",
+    "deleteAccount": "Delete Account",
+    "logout": "Logout",
+    "noKeepMe": "No, keep it",
+    "yesLogout": "Yes, Logout",
+    "yesDelete": "Yes, delete",
+    "save": "Save",
+    "confirm": "Confirm"
+  },
+  "ERRORS": {
+    "shortPassword": "Password is short",
+    "phoneLength": "Phone number must be {value} numbers",
+    "isValidEmail": "Enter valid email address",
+    "verificationCode": "Verification Code Is Required",
+    "notEqualPasswords": "Passwords not matches",
+    "isRequired": "{name} is required",
+    "validEmailAddress": "Email address should be valid email"
+  },
+  "FOOTER": {
+    "rights": "Najid AL-Qimam All Rights Reserved",
+    "SheblLegal": "Shebl Legal",
+    "TermsandConditions": "Terms and Conditions",
+    "PrivacyPolicy": "Privacy Policy",
+    "footdesc": "Learn about our vision, mission, and the values we believe in. Discover the story of our firm's founding and the legal journey that made us one of the leading law firms. We work with dedication to achieve justice and serve our clients."
+  },
+  "TITLES": {
+    "letsTalkTech": " Let’s Talk Tech",
+    "letsTalkTechDesc": "Got a question about IT solutions, custom software, or digital transformation? Our experts are ready to provide the support and answers you need.",
+    "yourPartnerInDigitalSuccess": "Your Partner In Digital Success",
+    "creativeServices": "Creative Services",
+    "aboutUs": "About Us",
+    "ourTechnologies": "Our Advanced Technologies",
+    "ourTechnologiesDesc": "We utilize the latest technologies and innovative solutions to ensure the highest levels of performance and efficiency.",
+    "descriptionServiceSection": "Turning your ideas into cutting-edge technologies. Turning your ideas into cutting-edge technologies",
+    "serviceSection": "Discover Our Services."
+  },
+  "Back_to_home": "Back to home",
+  "Years experience in serving people and mankind": "Years experience in serving people and mankind",
+  "rehabilitation long-term care": "rehabilitation & long-term care",
+  "Release The": "Release The",
+  "Pain Be More": "Pain Be More",
+  "Alive": "Alive.",
+  "Back to home": "Back to home",
+  "pleaseKindlyTryAgain": "Please Kindly Try Again",
+  "something went wrong": "something went wrong"
+}

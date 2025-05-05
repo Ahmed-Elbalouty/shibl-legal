@@ -1,0 +1,9 @@
+.title-wrapper {
+  @apply mb-5 flex flex-col gap-1 md:mb-7 lg:mb-11  lg:gap-3;
+  .title {
+    @apply max-w-[1400px] text-xl font-bold md:text-2xl md:font-bold lg:text-3xl lg:leading-[62px];
+  }
+  .desc {
+    @apply max-w-[500px] text-sub mt-[-3px];
+  }
+}
