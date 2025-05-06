@@ -12,13 +12,13 @@ function Button({ buttonText }: ButtonProps) {
 
   return (
     <button
-    data-aos="fade-left"
+      data-aos="fade-left"
       style={{
-        background: 'linear-gradient(264.73deg, #CC966A 4.98%, #D39A6B 93.5%)',
+        background: "linear-gradient(264.73deg, #CC966A 4.98%, #D39A6B 93.5%)",
       }}
-      className="pt-2 pb-2 pr-3 pl-3 rounded-[40px] flex gap-1 items-center mt-4"
+      className="mt-4 flex items-center gap-1 rounded-[2.5rem] pb-2 pl-3 pr-3 pt-2"
     >
-      <span className="font-[400] text-[14px] md:text-[17px] text-white">{buttonText}</span>
+      <span className="text-sm text-white md:text-[17px]">{buttonText}</span>
       <span>
         <Image
           src={arrow}

@@ -7,12 +7,19 @@ type PageBgProps = {
 function PageBg({ imgSrc, title, desc }: PageBgProps) {
   return (
     <section
-      className="bg-cover bg-center min-h-[90%] w-full pt-[120px] pb-[120px] px-[48px] relative top-0"
+      className="relative top-0 min-h-[90%] w-full bg-cover bg-center px-[48px] pb-[120px] pt-[120px]"
       style={{ backgroundImage: `url(${imgSrc})` }}
     >
-      <div data-aos="fade-left" className="text-center text-white flex flex-col w-full items-center gap-2">
-        <h2 className="text-4xl font-[700] lg:max-w-[600px] xl:max-w-[700px]">{title}</h2>
-        <p className="text-[#E5E5E5] font-[400] text-[16px] md:text-[20px] lg:max-w-[600px] xl:max-w-[700px]">{desc}</p>
+      <div
+        data-aos="fade-left"
+        className="flex w-full flex-col items-center gap-2 text-center text-white"
+      >
+        <h2 className="text-4xl font-[700] lg:max-w-[600px] xl:max-w-[700px]">
+          {title}
+        </h2>
+        <p className="text-[16px] font-[400] text-[#E5E5E5] md:text-xl lg:max-w-[600px] xl:max-w-[700px]">
+          {desc}
+        </p>
       </div>
     </section>
   );

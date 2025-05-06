@@ -11,6 +11,7 @@ export default {
     colors: {
       'primary': '#C19877',
       'secondary': '#F2F4F5',
+      "secondary-color":'#B3B3B3',
       'secondary-dark': '#ecb737',
       'third': '#f2f4fb',
       'text': '#141324',
@@ -65,7 +66,12 @@ export default {
     maxWidth: {
       '3/4': '75%',
     },
-    extend: {},
+    extend: {
+      padding: {
+        sectionPadding: "48px", 
+        mobileSecPadding: "20px", 
+      },
+    },
     container: {
       center: true,
       padding: {

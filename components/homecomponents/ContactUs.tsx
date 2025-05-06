@@ -10,7 +10,7 @@ import { useTranslations } from "next-intl";
 function ContactUs() {
   const t = useTranslations();
   return (
-    <section className="px-[48px] py-[88px]">
+    <section className="px-mobileSecPadding py-sectionPadding md:px-sectionPadding">
       <Title
         className="items-center text-center lg:items-start lg:text-start"
         title={t("CONTACTUS.title")}
@@ -18,16 +18,14 @@ function ContactUs() {
       />
 
       <div className="flex flex-col items-center justify-between pt-5 lg:flex-row">
-        {/* Text and Cards Container */}
         <div className="mx-auto flex flex-col items-center justify-center gap-6 text-center lg:max-w-[550px] xl:max-w-[721px]">
           <div className="flex flex-col gap-2" data-aos="fade-left">
-            <h2 className="text-2xl font-[700] lg:text-4xl">
+            <h2 className="text-2xl font-bold lg:text-4xl">
               {t("CONTACTUS.SheblLegal")}
             </h2>
             <span className="text-[#B3B3B3]">{t("CONTACTUS.trusted")}</span>
           </div>
 
-          {/* Cards Grid */}
           <div
             className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2"
             data-aos="fade-right"
@@ -40,16 +38,15 @@ function ContactUs() {
             ].map((item, i) => (
               <div
                 key={i}
-                className="flex items-center gap-4 rounded-[32px] bg-white p-4"
+                className="flex items-center gap-4 rounded-[2rem] bg-white p-4"
               >
                 <Image
                   src={item.icon}
                   alt={item.value}
-                  width={24}
-                  height={24}
+                  className="size-[24px]"
                 />
                 <div>
-                  <p className="font-[400] text-[#333333]">{item.value}</p>
+                  <p className="text-[#333333]">{item.value}</p>
                 </div>
               </div>
             ))}

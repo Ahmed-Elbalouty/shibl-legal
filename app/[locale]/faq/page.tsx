@@ -27,6 +27,18 @@ function FAQ() {
       question: t("FAQ.question5"),
       answer: t("FAQ.answer5"),
     },
+    {
+      question: t("FAQ.question6"),
+      answer: t("FAQ.answer5"),
+    },
+    {
+      question: t("FAQ.question6"),
+      answer: t("FAQ.answer5"),
+    },
+    {
+      question: t("FAQ.question7"),
+      answer: t("FAQ.answer7"),
+    },
   ];
 
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -58,13 +70,14 @@ function FAQ() {
                 </span>
               </button>
 
-              {/* الإجابة تحت السؤال */}
               <div
                 className={`overflow-hidden transition-all duration-300 ${
                   openIndex === index ? "max-h-96 px-4 pb-4" : "max-h-0 px-4"
                 }`}
               >
-                <p className="text-[#999999]">{item.answer}</p>
+                <p className="text-secondary-color font-medium">
+                  {item.answer}
+                </p>
               </div>
             </div>
           ))}

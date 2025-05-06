@@ -1,29 +1,60 @@
-import Image from "next/image"
-import award from "@/assets/images/award.png"
-import Button from "../general/Button"
+import Image from "next/image";
+import award from "@/assets/images/award.png";
 import { useTranslations } from "next-intl";
-
+import arrow from "@/assets/images/arrow-left.png";
+import { useLocale } from "next-intl";
+import LocalePath from "../LocalePath";
 
 function HeroSection() {
-  const t = useTranslations()
+  const t = useTranslations();
+  const locale = useLocale();
+  const isEnglish = locale === "en";
   return (
-    <section className="bg-[url('@/assets/images/bghero.png')] bg-cover bg-center min-h-[90%] w-full pt-[130px] pb-[130px] px-[48px] relative top-0">
+    <section className="px-mobileSecPadding md:px-sectionPadding relative top-0 min-h-[90%] w-full bg-[url('@/assets/images/bghero.png')] bg-cover bg-center py-[130px]">
       <div className="content" data-aos="fade-left">
-          <div className="flex items-center gap-1">
-            <Image src={award} alt="Award Image" width={32} height={32}/>
-            <span className="font-[500] text-[#CCCCCC]">{t("HERO.award")}</span>
+        <div className="flex items-center gap-1">
+          <Image src={award} alt="Award Image" className="size-[32px]" />
+          <span className="text-secondary-color font-medium">
+            {t("HERO.award")}
+          </span>
+        </div>
+        <div className="lg:max-w-[750px] xl:max-w-[850px]">
+          <div className="mt-2 text-2xl font-bold text-white md:text-3xl lg:text-4xl xl:text-5xl">
+            {t("HERO.main")}
           </div>
-          <div className="lg:max-w-[750px] xl:max-w-[850px]">
-            <div className="text-white font-bold text-[25px] md:text-[30px] lg:text-[40px] mt-2">{t("HERO.main")}</div>
-            <div className="text-[17px] text-[#E5E5E5] font-[400] mt-4">{t("HERO.bottom")}</div>
+          <div className="text-secondary-color mt-4 text-base md:text-lg">
+            {t("HERO.bottom")}
           </div>
-          <div className="flex items-center gap-2 mt-4">
-            <Button buttonText={t("HERO.contact")}/>
-            <div className="mt-3 font-[500] text-[#B3B3B3]">{t("HERO.textnextbtn")}</div>
+        </div>
+        <div className="mt-4 flex items-center gap-2">
+          <LocalePath href="/contact">
+            <button
+              data-aos="fade-left"
+              style={{
+                background:
+                  "linear-gradient(264.73deg, #CC966A 4.98%, #D39A6B 93.5%)",
+              }}
+              className="mt-4 flex items-center gap-1 rounded-[2.5rem] pb-2 pl-3 pr-3 pt-2"
+            >
+              <span className="text-sm text-white md:text-[17px]">
+                {t("HERO.contact")}
+              </span>
+              <span>
+                <Image
+                  src={arrow}
+                  alt="Left Arrow"
+                  className={`${isEnglish ? "rotate-180" : ""} size-[24px]`}
+                />
+              </span>
+            </button>
+          </LocalePath>
+          <div className="text-secondary-color mt-3 font-medium">
+            {t("HERO.textnextbtn")}
           </div>
+        </div>
       </div>
     </section>
-  )
+  );
 }
 
-export default HeroSection
+export default HeroSection;

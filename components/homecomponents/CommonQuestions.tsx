@@ -22,10 +22,10 @@ function CommonQuestions() {
 
   return (
     <section
-      className="flex w-full justify-center p-[24px] py-10 md:p-[48px]"
+      className="px-mobileSecPadding py-sectionPadding md:px-sectionPadding flex w-full justify-center"
       data-aos="fade-right"
     >
-      <div className="flex w-[90%] flex-col items-center rounded-[40px] bg-[url('@/assets/images/why-us.png')] bg-cover bg-center px-6 py-10 text-center md:px-[72px]">
+      <div className="flex w-[90%] flex-col items-center rounded-[2.5rem] bg-[url('@/assets/images/why-us.png')] bg-cover bg-center px-6 py-10 text-center md:px-[72px]">
         {/* Title and Button */}
         <div className="mb-8 flex w-full items-center justify-between">
           <h1 className="text-2xl font-bold text-white">{t("FAQ.title")}</h1>

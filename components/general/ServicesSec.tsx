@@ -16,7 +16,7 @@ function ServicesSec() {
     desc: string;
     image: StaticImageData;
   }
-  
+
   const services: Service[] = [
     {
       title: t("SERVICES.textone"),
@@ -41,34 +41,41 @@ function ServicesSec() {
     {
       title: t("SERVICES.textfive"),
       desc: t("SERVICES.textfivedesc"),
-      image: ser5, 
+      image: ser5,
     },
   ];
   return (
-    <section className="py-[44px] px-[48px]">
-      <Title
-        title={t("SERVICES.title")}
-        desc={t("SERVICES.desc")}
-      />
+    <section className="px-[48px] py-[44px]">
+      <Title title={t("SERVICES.title")} desc={t("SERVICES.desc")} />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-8" data-aos="fade-right">
+      <div
+        className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3"
+        data-aos="fade-right"
+      >
         {services.map((service, index) => (
           <BaseCard
             key={index}
-            className={`bg-[#FCFAF8] rounded-[24px] p-5 ${
+            className={`rounded-3xl bg-[#FCFAF8] p-5 ${
               index === 4 ? "lg:col-span-2" : ""
             }`}
           >
-            <div className="bg-white p-[5px] rounded-full w-fit mb-4 border border-gray-200">
-              <Image src={service.image} alt={service.title} width={60} height={60} />
+            <div className="mb-4 w-fit rounded-full border border-gray-200 bg-white p-[5px]">
+              <Image
+                src={service.image}
+                alt={service.title}
+                width={60}
+                height={60}
+              />
             </div>
-            <h3 className="text-2xl font-bold mb-2 text-start">{service.title}</h3>
-            <p className="text-sm text-[#B3B3B3] text-start">{service.desc}</p>
+            <h3 className="mb-2 text-start text-2xl font-bold">
+              {service.title}
+            </h3>
+            <p className="text-start text-sm text-[#B3B3B3]">{service.desc}</p>
           </BaseCard>
         ))}
       </div>
     </section>
-  )
+  );
 }
 
-export default ServicesSec
+export default ServicesSec;

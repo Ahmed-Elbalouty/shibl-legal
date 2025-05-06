@@ -71,14 +71,36 @@
     "title": "Frequently Asked Questions",
     "desc": "All the questions that come to your mind to learn more about Shibl Law Firm",
     "viewAllButton": "View All",
-    "question1": "What are your services?",
-    "question2": "What are your services?",
-    "question3": "What are your services?",
-    "question4": "What are your services?",
-    "question5": "What are your services?",
-    "question6": "What are your services?",
-    "question7": "What are your services?",
-    "answer1": "We offer a variety of services such as web design, app development, and technical consulting."
+    "question1": "What legal services does Shibl Law Firm offer?",
+    "answer1": "We offer a variety of legal services including: legal consultations, litigation and defense before courts, contract drafting, company formation, and legal representation",
+    "question2": "How can I contact the Shibl Law Firm team?",
+    "answer2": "We offer a variety of legal services including: legal consultations, litigation and defense before courts, contract drafting, company formation, and legal representation",
+    "question3": "How can I book a legal consultation",
+    "answer3": "We offer a variety of legal services, including legal consultations, litigation and defense before courts, contract drafting, company formation, and legal representation",
+    "question4": "Do you offer legal services only for companies or for individuals as well?",
+    "answer4": "We offer a variety of legal services, including legal consultations, litigation and defense before courts, contract drafting, company formation, and legal representation",
+    "question5": "How can I book a legal consultation",
+    "answer5": "We offer a variety of legal services, including legal consultations, litigation and defense before courts, contract drafting, company formation, and legal representation",
+    "question6": "Do you offer legal services only for companies or for individuals as well?",
+    "answer6": "We offer a variety of legal services, including legal consultations, litigation and defense before courts, contract drafting, company formation, and legal representation",
+    "question7": "How can I book a legal consultation",
+    "answer7": "We offer a variety of legal services, including legal consultations, litigation and defense before courts, contract drafting, company formation, and legal representation"
+  },
+  "GOALS": {
+    "title": "Our Goals",
+    "desc": "Shibl Law Firm aims to provide a comprehensive legal platform that enables users to access legal services with ease and professionalism. The company’s main goals include",
+    "lione": "Empowering users to quickly search for and access services",
+    "litwo": "Ensure customer satisfaction",
+    "lithree": "Providing specialized legal services",
+    "lifour": "Delivering a smooth and efficient user experience",
+    "lifive": "Providing a comprehensive management system for administration"
+  },
+  "VALUES": {
+    "title": "Core Values",
+    "desc": "Professionalism and transparency in dealing with clients, innovation in providing digital legal solutions, offering accurate and reliable legal services, and building long-term relationships with clients through continuous support"
+  },
+  "VISION": {
+    "desc": "Our vision is for Shibl Law Firm to become the leading digital platform for providing legal services in the region by facilitating access to legal advice and enhancing trust between clients and lawyers"
   },
   "LABELS": {
     "contactUs": "Contact Us",

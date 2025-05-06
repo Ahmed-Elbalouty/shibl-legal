@@ -45,7 +45,7 @@ function OurServices() {
     },
   ];
   return (
-    <section className="px-[48px] py-[44px]">
+    <section className="px-mobileSecPadding py-sectionPadding md:px-sectionPadding">
       <Title title={t("SERVICES.title")} desc={t("SERVICES.desc")} />
 
       <div
@@ -55,7 +55,7 @@ function OurServices() {
         {services.map((service, index) => (
           <BaseCard
             key={index}
-            className={`rounded-[24px] bg-[#FCFAF8] p-5 ${
+            className={`rounded-3xl bg-[#FCFAF8] p-5 ${
               index === 4 ? "lg:col-span-2" : ""
             }`}
           >
@@ -63,14 +63,15 @@ function OurServices() {
               <Image
                 src={service.image}
                 alt={service.title}
-                width={60}
-                height={60}
+                className="size-[60px]"
               />
             </div>
             <h3 className="mb-2 text-start text-xl font-bold">
               {service.title}
             </h3>
-            <p className="text-start text-sm text-[#B3B3B3]">{service.desc}</p>
+            <p className="text-secondary-color text-start text-sm">
+              {service.desc}
+            </p>
           </BaseCard>
         ))}
       </div>

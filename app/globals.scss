@@ -196,7 +196,7 @@ html[dir="rtl"] {
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-primary;
+  // @apply bg-primary;
 }
 
 input[type="number"]::-webkit-inner-spin-button,

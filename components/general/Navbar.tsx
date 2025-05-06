@@ -1,5 +1,4 @@
 "use client";
-
 import { useState, useEffect, useRef } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import LangSwitcher from "../LangSwitcher";
@@ -12,6 +11,7 @@ import "aos/dist/aos.css";
 
 function Navbar() {
   const t = useTranslations();
+
   const navLinks: string[] = [
     "home",
     "about",
@@ -28,28 +28,25 @@ function Navbar() {
 
   useEffect(() => {
     const handleClose = (e: MouseEvent | TouchEvent) => {
-      // Checking if the click happened outside of the drawer
       if (drawerRef.current && !drawerRef.current.contains(e.target as Node)) {
         setDrawerOpen(false);
       }
     };
 
     const handleResize = () => {
-      if (drawerOpen) setDrawerOpen(false); // Close the drawer on window resize
+      if (drawerOpen) setDrawerOpen(false);
     };
 
-    // Explicitly casting events
     const handleScroll = (e: Event) => handleClose(e as MouseEvent);
     const handleMouseDown = (e: MouseEvent) => handleClose(e);
     const handleTouchStart = (e: TouchEvent) => handleClose(e);
 
-    window.addEventListener("scroll", handleScroll); // Listen to scroll event
-    document.addEventListener("mousedown", handleMouseDown); // Listen to clicks
-    document.addEventListener("touchstart", handleTouchStart); // Listen to touch events
-    window.addEventListener("resize", handleResize); // Listen to resize events
+    window.addEventListener("scroll", handleScroll);
+    document.addEventListener("mousedown", handleMouseDown);
+    document.addEventListener("touchstart", handleTouchStart);
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      // Cleanup event listeners when component unmounts
       window.removeEventListener("scroll", handleScroll);
       document.removeEventListener("mousedown", handleMouseDown);
       document.removeEventListener("touchstart", handleTouchStart);
@@ -63,9 +60,8 @@ function Navbar() {
   const locale = useLocale();
 
   return (
-    <nav className="fixed left-0 top-0 z-50 flex w-full items-center justify-between bg-[#071c31b6] py-3 pl-[24px] pr-[24px] text-white">
+    <nav className="px-mobileSecPadding fixed left-0 top-0 z-50 flex w-full items-center justify-between bg-[#071c31b6] py-3 text-white">
       <div className="flex items-center gap-4">
-        {/* Menu Icon */}
         <span
           onClick={toggleDrawer}
           className="flex cursor-pointer flex-col gap-[4px] lg:hidden"
@@ -81,7 +77,9 @@ function Navbar() {
       </div>
 
       {/* Desktop links */}
-      <ul className="hidden items-center justify-between gap-5 text-[16px] font-[500] lg:flex">
+      <ul
+        className={`hidden items-center justify-between gap-5 text-base ${locale === "ar" ? "font-medium" : "font-semibold"} lg:flex`}
+      >
         {navLinks.map((link) => (
           <li
             key={link}
@@ -104,15 +102,17 @@ function Navbar() {
           >
             <div className="mb-2 flex items-center justify-between">
               <LocalePath href="/">
-                <Image src={navlogo} alt="NavLogo" width={40} height={40} />
+                <Image src={navlogo} alt="NavLogo" className="size-[40px]" />
               </LocalePath>
               <button onClick={closeDrawer}>
-                <TimesIcon className="h-[14px] w-[14px] text-black" />
+                <TimesIcon className="size-[14px] text-black" />
               </button>
             </div>
 
             {/* Drawer Links */}
-            <ul className="flex flex-col gap-4 text-[16px] font-[500] text-black">
+            <ul
+              className={`flex flex-col gap-4 text-base ${locale === "ar" ? "font-medium" : "font-semibold"} text-black`}
+            >
               {navLinks.map((link, index) => (
                 <li
                   key={link}
