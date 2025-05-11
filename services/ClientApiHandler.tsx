@@ -1,5 +1,5 @@
 "use client";
-import AppError from "../utils/appError";
+// import AppError from "../utils/appError";
 import axiosInstance from "./axiosClient";
 
 export const getAllServices = async () => {
@@ -39,11 +39,11 @@ export const getAllServices = async () => {
 //     }
 //   };
 
-//   export const getBrandsData = async (key?:number) => {
-//     try {
-//       const { data } = await axiosInstance.get(`/brands_without_paginate${key?`?keyword=${key}` : ""}`);
-//       return data || [];
-//     } catch {
-//       throw new CustomError("Failed to fetch brands data", 500, "APIError");
-//     }
-//   };
+// export const getAllData = async () => {
+//   try {
+//     const { data } = await axiosInstance.get("");
+//     return data || [];
+//   } catch {
+//     throw new CustomError("Failed to fetch brands data", 500, "APIError");
+//   }
+// };

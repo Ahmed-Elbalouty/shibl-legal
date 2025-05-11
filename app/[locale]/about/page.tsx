@@ -1,3 +1,4 @@
+"use client";
 import AboutUs from "@/components/homecomponents/AboutUs";
 import PageBg from "../../../components/general/PageBg";
 import image from "@/assets/images/about/aboutbg.png";
@@ -11,7 +12,7 @@ function About() {
   const t = useTranslations();
 
   return (
-    <div className="bg-[#F2F4F5]">
+    <div>
       <PageBg
         imgSrc={image.src}
         title={t("LABELS.about")}

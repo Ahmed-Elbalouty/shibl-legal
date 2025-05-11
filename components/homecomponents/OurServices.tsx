@@ -1,52 +1,47 @@
-import Image, { StaticImageData } from "next/image";
+"use client";
+import Image from "next/image";
 import BaseCard from "../base/BaseCard";
 import Title from "../general/Title";
+import { useEffect, useState } from "react";
+import { getOurServicesData } from "@/services/ApiHandler";
 
-import ser1 from "@/assets/images/ser1.png";
-import ser2 from "@/assets/images/ser2.png";
-import ser3 from "@/assets/images/ser3.png";
-import ser4 from "@/assets/images/ser4.png";
-import ser5 from "@/assets/images/ser5.png";
-import { useTranslations } from "next-intl";
+interface Service {
+  id: number;
+  icon: string;
+  background: string;
+  title: string;
+  description: string;
+}
+
+interface Banner {
+  title: string;
+  description: string;
+  image: string;
+  icon: string;
+}
 
 function OurServices() {
-  const t = useTranslations();
-  interface Service {
-    title: string;
-    desc: string;
-    image: StaticImageData;
-  }
+  const [services, setServices] = useState<Service[]>([]);
+  const [banner, setBanner] = useState<Banner | null>(null);
 
-  const services: Service[] = [
-    {
-      title: t("SERVICES.textone"),
-      desc: t("SERVICES.textonedesc"),
-      image: ser1,
-    },
-    {
-      title: t("SERVICES.texttwo"),
-      desc: t("SERVICES.texttwodesc"),
-      image: ser2,
-    },
-    {
-      title: t("SERVICES.textthree"),
-      desc: t("SERVICES.textthreedesc"),
-      image: ser3,
-    },
-    {
-      title: t("SERVICES.textfour"),
-      desc: t("SERVICES.textfourdesc"),
-      image: ser4,
-    },
-    {
-      title: t("SERVICES.textfive"),
-      desc: t("SERVICES.textfivedesc"),
-      image: ser5,
-    },
-  ];
+  const fetchData = async () => {
+    try {
+      const res = await getOurServicesData();
+      const data = res.data;
+      setBanner(data.banner);
+      setServices(data.our_services);
+    } catch (error) {
+      console.error("Error fetching services:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <section className="px-mobileSecPadding py-sectionPadding md:px-sectionPadding">
-      <Title title={t("SERVICES.title")} desc={t("SERVICES.desc")} />
+      <Title title={banner?.title || ""} desc={banner?.description || ""} />
 
       <div
         className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3"
@@ -54,15 +49,17 @@ function OurServices() {
       >
         {services.map((service, index) => (
           <BaseCard
-            key={index}
+            key={service.id}
             className={`rounded-3xl bg-[#FCFAF8] p-5 ${
               index === 4 ? "lg:col-span-2" : ""
             }`}
           >
             <div className="mb-4 w-fit rounded-full border border-gray-200 bg-white p-[5px]">
               <Image
-                src={service.image}
+                src={service.icon}
                 alt={service.title}
+                width={60}
+                height={60}
                 className="size-[60px]"
               />
             </div>
@@ -70,7 +67,7 @@ function OurServices() {
               {service.title}
             </h3>
             <p className="text-secondary-color text-start text-sm">
-              {service.desc}
+              {service.description}
             </p>
           </BaseCard>
         ))}

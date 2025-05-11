@@ -1,8 +1,6 @@
 "use client";
 
 import Image, { StaticImageData } from "next/image";
-import about from "@/assets/images/about-section.png";
-import award from "@/assets/images/award.png";
 import arrow from "@/assets/images/arrow-left.png";
 import roundedOne from "@/assets/images/round-about-1.png";
 import roundedTwo from "@/assets/images/round-about-2.png";
@@ -10,6 +8,8 @@ import roundedThree from "@/assets/images/round-about-3.png";
 import { useTranslations, useLocale } from "next-intl";
 import LocalePath from "../LocalePath";
 import Title from "../general/Title";
+import { useEffect, useState } from "react";
+import { getAllData } from "@/services/ApiHandler";
 
 type RoundedImage = {
   src: StaticImageData;
@@ -17,17 +17,42 @@ type RoundedImage = {
   className?: string;
 };
 
+interface Feature {
+  icon: string;
+  value: string;
+}
+
+interface AboutInfo {
+  title: string;
+  description: string;
+  image: string;
+  icon: string;
+  features: Feature[];
+}
+
+interface Section {
+  type: string;
+  title: string;
+  description: string;
+  image: string;
+  icon: string;
+  is_active: boolean;
+  features?: Feature[];
+}
+
+interface ApiResponse {
+  data: {
+    sections: Section[];
+  };
+}
+
 function AboutUs() {
   const t = useTranslations();
   const locale = useLocale();
   const isRTL = locale === "ar";
 
-  const awards: string[] = [
-    t("ABOUTUS.textone"),
-    t("ABOUTUS.texttwo"),
-    t("ABOUTUS.textthree"),
-    t("ABOUTUS.textfour"),
-  ];
+  const [aboutData, setAboutData] = useState<AboutInfo | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const roundedImages: RoundedImage[] = [
     { src: roundedOne, alt: "User 1" },
@@ -43,25 +68,60 @@ function AboutUs() {
     },
   ];
 
+  useEffect(() => {
+    const fetchAboutData = async () => {
+      try {
+        const data: ApiResponse = await getAllData();
+
+        const aboutSection = data.data.sections.find(
+          (section) => section.type === "about"
+        );
+
+        if (aboutSection) {
+          setAboutData({
+            title: aboutSection.title,
+            description: aboutSection.description,
+            image: aboutSection.image,
+            icon: aboutSection.icon,
+            features: aboutSection.features ?? [],
+          });
+        } else {
+          setError("About section not found");
+        }
+      } catch (err) {
+        const errorMessage =
+          err instanceof Error ? err.message : "Failed to load data";
+        setError(errorMessage);
+      }
+    };
+
+    fetchAboutData();
+  }, []);
+
+  if (error) return <div>{error}</div>;
+  if (!aboutData) return <div>Loading...</div>;
+
   return (
     <section className="px-mobileSecPadding py-sectionPadding md:px-sectionPadding flex flex-col items-center justify-between lg:flex-row">
       <div className="mb-8 w-full lg:mb-0 lg:max-w-[550px] xl:max-w-[721px]">
         <div data-aos="fade-left" className="mb-5">
-          <Title title={t("ABOUTUS.title")} desc={t("ABOUTUS.desc")} />
+          <Title title={aboutData.title} desc={aboutData.description} />
         </div>
 
         <div
           data-aos="fade-left"
           className="grid grid-cols-1 gap-3 text-sm font-medium sm:grid-cols-2"
         >
-          {awards.map((text, index) => (
+          {aboutData.features.map((feature, index) => (
             <div key={index} className="flex items-center gap-2">
               <Image
-                src={award}
+                src={feature.icon}
                 alt={`Award Icon ${index + 1}`}
                 className="size-[32px]"
+                width={32}
+                height={32}
               />
-              <span className="text-base">{text}</span>
+              <span className="text-base">{feature.value}</span>{" "}
             </div>
           ))}
         </div>
@@ -111,7 +171,12 @@ function AboutUs() {
         data-aos="fade-left"
         className="bg-[url('@/assets/images/aboutbg.png')] bg-cover bg-center lg:block"
       >
-        <Image src={about} alt="About Us Image" width={420} />
+        <Image
+          src={aboutData.image}
+          alt="About Us Image"
+          width={420}
+          height={283}
+        />
       </div>
     </section>
   );

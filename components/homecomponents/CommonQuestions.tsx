@@ -1,23 +1,45 @@
 "use client";
-import { useTranslations } from "next-intl";
 import { useState, useEffect } from "react";
-
 import AOS from "aos";
 import "aos/dist/aos.css";
 import LocalePath from "../LocalePath";
+import { getFAQData } from "@/services/ApiHandler";
+
+interface FAQ {
+  id: number;
+  question: string;
+  answer: string;
+}
+
+interface Banner {
+  title: string;
+  description: string;
+  image: string;
+}
 
 function CommonQuestions() {
-  const t = useTranslations();
-  const [isOpen, setIsOpen] = useState<boolean[]>([false, false, false, false]);
+  const [isOpen, setIsOpen] = useState<boolean[]>([]);
+  const [faqs, setFaqs] = useState<FAQ[]>([]);
+  const [banner, setBanner] = useState<Banner | null>(null);
 
   const toggleAccordion = (index: number) => {
-    setIsOpen((prevState) =>
-      prevState.map((item, i) => (i === index ? !item : item)),
-    );
+    setIsOpen((prev) => prev.map((item, i) => (i === index ? !item : item)));
   };
 
   useEffect(() => {
     AOS.init();
+    const fetchData = async () => {
+      try {
+        const res = await getFAQData();
+        const faqItems = res.data.faq.slice(0, 4); // Show only 4 items
+        setFaqs(faqItems);
+        setBanner(res.data.banner);
+        setIsOpen(faqItems.map(() => false)); // Initialize accordion state
+      } catch (err) {
+        console.error("Error loading FAQs:", err);
+      }
+    };
+    fetchData();
   }, []);
 
   return (
@@ -25,28 +47,27 @@ function CommonQuestions() {
       className="px-mobileSecPadding py-sectionPadding md:px-sectionPadding flex w-full justify-center"
       data-aos="fade-right"
     >
-      <div className="flex w-[90%] flex-col items-center rounded-[2.5rem] bg-[url('@/assets/images/why-us.png')] bg-cover bg-center px-6 py-10 text-center md:px-[72px]">
-        {/* Title and Button */}
+      <div className="flex w-[90%] flex-col bg-[url('@/assets/images/why-us.png')] items-center rounded-[2.5rem] bg-cover bg-center px-6 py-10 text-center md:px-[72px]">
         <div className="mb-8 flex w-full items-center justify-between">
-          <h1 className="text-2xl font-bold text-white">{t("FAQ.title")}</h1>
+          <h1 className="text-2xl font-bold text-white">
+            {banner?.title || "FAQs"}
+          </h1>
           <LocalePath href="/faq">
             <button className="mt-1 rounded-full border-2 border-primary px-6 py-2 text-primary hover:bg-primary hover:text-white">
-              {t("FAQ.viewAllButton")}
+              View All
             </button>
           </LocalePath>
         </div>
 
         {/* Questions */}
         <div className="w-full">
-          {[...Array(4)].map((_, index) => (
-            <div key={index}>
+          {faqs.map((faq, index) => (
+            <div key={faq.id}>
               <div
                 className="flex cursor-pointer items-center justify-between py-2"
                 onClick={() => toggleAccordion(index)}
               >
-                <p className="text-lg text-white">
-                  {t(`FAQ.question${index + 1}`)}
-                </p>
+                <p className="text-lg text-white">{faq.question}</p>
                 <span className="text-2xl text-white">
                   {isOpen[index] ? "-" : "+"}
                 </span>
@@ -63,11 +84,11 @@ function CommonQuestions() {
                     overflow: "hidden",
                   }}
                 >
-                  <p>{t(`FAQ.answer${index + 1}`)}</p>
+                  <p>{faq.answer}</p>
                 </div>
               )}
 
-              {index < 4 && (
+              {index < faqs.length - 1 && (
                 <div className="mt-4 border-t border-gray-300 border-opacity-30"></div>
               )}
             </div>

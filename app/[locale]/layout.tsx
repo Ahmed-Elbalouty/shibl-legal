@@ -18,7 +18,7 @@ export async function generateMetadata(
     // params,
   }: {
     params: { locale: string };
-  },
+  }
 ): Promise<Metadata> {
   // const { locale } = await params;
   // const isArabic = locale === "ar";
@@ -53,7 +53,7 @@ export default async function RootLayout({
       <head>
         <link rel="icon" href="/logo.png" />
       </head>
-      <body className="overflow-x-hidden">
+      <body className="overflow-x-hidden bg-[#F2F4F5]">
         <NextIntlClientProvider messages={messages}>
           <div className="flex min-h-[100vh] flex-col">
             <ToastProvider>

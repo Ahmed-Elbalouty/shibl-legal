@@ -1,21 +1,84 @@
 "use client";
 import Image from "next/image";
-import lawimage from "@/assets/images/about/law.png";
 import bgimage from "@/assets/images/about/imagefour.png";
-import { useTranslations } from "use-intl";
+import { useEffect, useState } from "react";
+import { getAllData } from "@/services/ApiHandler";
 function CoreValues() {
-  const t = useTranslations();
+  interface CoreInfo {
+    title: string;
+    description: string;
+    image: string;
+    icon: string;
+  }
+
+  interface Section {
+    type: string;
+    title: string;
+    description: string;
+    image: string;
+    icon: string;
+    is_active: boolean;
+  }
+
+  interface ApiResponse {
+    data: {
+      sections: Section[];
+    };
+  }
+
+  const [coreData, setCoreData] = useState<CoreInfo | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchCoreData = async () => {
+      try {
+        const data: ApiResponse = await getAllData();
+
+        const coreSection = data.data.sections.find(
+          (section) => section.type === "core_values"
+        );
+
+        console.log(data, "Data fetched successfully");
+        console.log(coreSection, "Found contact_info section");
+
+        if (coreSection) {
+          setCoreData({
+            title: coreSection.title,
+            description: coreSection.description,
+            image: coreSection.image,
+            icon: coreSection.icon,
+          });
+        } else {
+          setError("Goals Info section not found");
+        }
+      } catch (err) {
+        const errorMessage =
+          err instanceof Error ? err.message : "Failed to load data";
+        setError(errorMessage);
+      }
+    };
+
+    fetchCoreData();
+  }, []);
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+
+  if (!coreData) {
+    return <div>Loading...</div>;
+  }
   return (
     <section
       data-aos="fade-right"
       className="px-mobileSecPadding py-sectionPadding md:px-sectionPadding flex w-full items-center justify-center"
     >
       <div className="relative flex w-[90%] flex-col items-center justify-center rounded-2xl bg-[#FCFAF8] px-6 py-10 text-center shadow-md">
-        <Image src={lawimage} alt="Law Image" className="size-[50px]" />
-        <h2 className="my-2 text-2xl font-medium"> {t("VALUES.title")}</h2>
+        <Image src={coreData.icon} alt="Law Image" width={50} height={50} />
+        <h2 className="my-2 text-2xl font-medium"> {coreData.title}</h2>
 
         <p className="text-sm font-medium text-[#808080]">
-          {t("VALUES.desc")}
+          {coreData.description}
           <Image
             src={bgimage}
             alt="BG Image"
@@ -28,5 +91,4 @@ function CoreValues() {
     </section>
   );
 }
-
 export default CoreValues;

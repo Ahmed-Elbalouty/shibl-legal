@@ -1,20 +1,87 @@
+"use client";
 import Image from "next/image";
 import Title from "../general/Title";
-import contactbg from "@/assets/images/contactbg.png";
 import call from "@/assets/images/call.png";
 import sms from "@/assets/images/sms.png";
 import clock from "@/assets/images/clock.png";
 import location from "@/assets/images/location.png";
 import { useTranslations } from "next-intl";
+import { useEffect, useState } from "react";
+import { getAllData } from "@/services/ApiHandler";
+
+interface ContactInfo {
+  title: string;
+  description: string;
+  image: string;
+  icon: string;
+}
+
+interface Section {
+  type: string;
+  title: string;
+  description: string;
+  image: string;
+  icon: string;
+  is_active: boolean;
+}
+
+interface ApiResponse {
+  data: {
+    sections: Section[];
+  };
+}
 
 function ContactUs() {
   const t = useTranslations();
+  const [contactData, setContactData] = useState<ContactInfo | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchContactData = async () => {
+      try {
+        const data: ApiResponse = await getAllData();
+
+        const contactSection = data.data.sections.find(
+          (section) => section.type === "contact_info"
+        );
+
+        console.log(data, "Data fetched successfully");
+        console.log(contactSection, "Found contact_info section");
+
+        if (contactSection) {
+          setContactData({
+            title: contactSection.title,
+            description: contactSection.description,
+            image: contactSection.image,
+            icon: contactSection.icon,
+          });
+        } else {
+          setError("Contact info section not found");
+        }
+      } catch (err) {
+        const errorMessage =
+          err instanceof Error ? err.message : "Failed to load data";
+        setError(errorMessage);
+      }
+    };
+
+    fetchContactData();
+  }, []);
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+
+  if (!contactData) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <section className="px-mobileSecPadding py-sectionPadding md:px-sectionPadding">
       <Title
         className="items-center text-center lg:items-start lg:text-start"
-        title={t("CONTACTUS.title")}
-        desc={t("CONTACTUS.desc")}
+        title={contactData.title}
+        desc={contactData.description}
       />
 
       <div className="flex flex-col items-center justify-between pt-5 lg:flex-row">
@@ -55,9 +122,10 @@ function ContactUs() {
 
         {/* Right-side Image */}
         <Image
-          src={contactbg}
+          src={contactData.image}
           alt="Contact Image"
           width={420}
+          height={283}
           className="mt-5 lg:mt-0 lg:block"
         />
       </div>
